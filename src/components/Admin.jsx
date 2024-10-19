@@ -15,7 +15,8 @@ const Admin = () => {
   // Fetch products from the API
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('https://dukaapp-2.onrender.com/products');
+      // const response = await axios.get('https://dukaapp-2.onrender.com/products');
+      const response = await axios.get('https://dukaapp-3.onrender.com/products');
       setProducts(response.data);
     } catch (error) {
       console.error('Error fetching products:', error);
@@ -30,19 +31,21 @@ const Admin = () => {
   const addProduct = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://dukaapp-2.onrender.com/products', newProduct);
+      // const response = await axios.post('https://dukaapp-2.onrender.com/products', newProduct);
+      const response = await axios.post('https://dukaapp-3.onrender.com/products', newProduct);
       setProducts([...products, response.data]);
       setNewProduct({ name: '', price: '', description: '', image: '' });
     } catch (error) {
       console.error('Error adding product:', error);
     }
   };
-
+// https://dukaapp-3.onrender.com
   // Update a product
   const updateProduct = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.patch(`https://dukaapp-2.onrender.com/products/${editProduct.id}`, editProduct);
+      // const response = await axios.patch(`https://dukaapp-2.onrender.com/products/${editProduct.id}`, editProduct);
+      const response = await axios.patch(`https://dukaapp-3.onrender.com/products/${editProduct.id}`, editProduct);
       setProducts(products.map(product => product.id === editProduct.id ? response.data : product));
       setEditProduct(null);
     } catch (error) {
@@ -53,7 +56,8 @@ const Admin = () => {
   // Delete a product
   const deleteProduct = async (id) => {
     try {
-      await axios.delete(`https://dukaapp-2.onrender.com/products/${id}`);
+      // await axios.delete(`https://dukaapp-2.onrender.com/products/${id}`);
+      await axios.delete(`https://dukaapp-3.onrender.com/products/${id}`);
       setProducts(products.filter(product => product.id !== id));
     } catch (error) {
       console.error('Error deleting product:', error);
