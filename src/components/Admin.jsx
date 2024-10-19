@@ -30,7 +30,7 @@ const Admin = () => {
   const addProduct = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://dukaapp-2.onrender.com/products', newProduct);
+      const response = await axios.post('https://dukaapp-3.onrender.com/products', newProduct);
       setProducts([...products, response.data]);
       setNewProduct({ name: '', price: '', description: '', image: '' });
     } catch (error) {
@@ -42,7 +42,7 @@ const Admin = () => {
   const updateProduct = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.patch(`https://dukaapp-2.onrender.com/products/${editProduct.id}`, editProduct);
+      const response = await axios.patch(`https://dukaapp-3.onrender.com/products/${editProduct.id}`, editProduct);
       setProducts(products.map(product => product.id === editProduct.id ? response.data : product));
       setEditProduct(null);
     } catch (error) {
@@ -53,7 +53,7 @@ const Admin = () => {
   // Delete a product
   const deleteProduct = async (id) => {
     try {
-      await axios.delete(`https://dukaapp-2.onrender.com/products/${id}`);
+      await axios.delete(`https://dukaapp-3.onrender.com/products/${id}`);
       setProducts(products.filter(product => product.id !== id));
     } catch (error) {
       console.error('Error deleting product:', error);
